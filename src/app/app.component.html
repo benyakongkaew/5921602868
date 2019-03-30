@@ -1,21 +1,56 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
-<router-outlet></router-outlet>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <button class="btn btn-success" type="button">ชื่อ</button>
+  </div>
+  <input type="text" class="form-control" 
+  placeholder="" aria-label="" aria-describedby="basic-addon1">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <button class="btn btn-success" type="button">คะแนน</button>
+  </div>
+  <input type="number"  class="form-control" [(ngModel)]="score"
+  placeholder="" aria-label="" aria-describedby="basic-addon1">
+</div>
+<span *ngIf="score>50">เกรด A</span>
+<span *ngIf="score<50">เกรด F</span>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Student Name</th>
+        <th>weight</th>
+        <th>height</th>
+        <th>ผลลัพธ์</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{student.studentId}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.weight}}</td>
+        <td>{{student.height}}</td>
+        <td>{{student.bmi}}</td>
+        <td *ngIf="student.bmi>25">อ้วน</td>
+        <td *ngIf="student.bmi<25">ผอม</td>
+        <td *ngIf="student.bmi==25">ปกติ</td>
+        
+      </tr>
+      <tr *ngFor="let s of StudentList;">
+          <td>{{s.studentId}}</td>
+          <td>{{s.name}}</td>
+          <td>{{s.weight}}</td>
+          <td>{{s.height}}</td>
+          <td>{{s.bmi}}</td>
+          <td *ngIf="s.bmi>25">อ้วน</td>
+          <td *ngIf="s.bmi<25">ผอม</td>
+          <td *ngIf="s.bmi==25">ปกติ</td>
+
+        </tr>
+    </tbody>
+  </table>
+  
